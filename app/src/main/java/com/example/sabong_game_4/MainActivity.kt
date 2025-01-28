@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sabong_game_4.config.PhoneConfigurator
-import com.example.sabong_game_4.game_world.GameWorld
+import com.example.sabong_game_4.game_world.GameWorldBuilder
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,13 +21,15 @@ class MainActivity : AppCompatActivity() {
             setToLandScape(this@MainActivity)
         }
 
-        GameWorld.setWorld(topLevelLayout, this)
-        GameWorld.setWorldBackground(
+        GameWorldBuilder.setWorld(topLevelLayout, this)
+        GameWorldBuilder.setWorldBackground(
             backgroundColor = Color.TRANSPARENT,
             borderColor = Color.BLACK,
             lineWidth = 15,
             padding = 15
         )
-        GameWorld.buildWorld()
+        GameWorldBuilder.buildWorld()?.apply {
+            initGame()
+        }
     }
 }
