@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.setPadding
 import com.example.sabong_game_4.config.PhoneConfigurator
 import com.example.sabong_game_4.custom.GandorView
 
@@ -25,8 +26,8 @@ class MainActivity : AppCompatActivity() {
         findViewById<ViewGroup>(R.id.root_layout).apply {
             background = GradientDrawable().apply {
                 setColor(Color.TRANSPARENT)
-                setStroke(10, Color.BLACK)
-//                setPadding(25, 25, 25, 25)
+                setStroke(15, Color.BLACK)
+                setPadding(15)
             }
 
             addView(GandorView(this@MainActivity).apply {
