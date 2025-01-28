@@ -13,7 +13,7 @@ class GandorView(context: Context): View(context), ICustomView {
 
         // add ratio conversion
         // was developing the dimensions on a Pixel 3a XL API 34
-        layoutParams = LinearLayout.LayoutParams(150, 150)
+        layoutParams = LinearLayout.LayoutParams(width, height)
     }
 
     override fun setBorderLine(backgroundColor: Int, borderColor: Int, lineWidth: Int) {

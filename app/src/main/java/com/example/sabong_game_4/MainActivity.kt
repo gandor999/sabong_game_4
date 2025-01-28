@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             addView(GandorView(this@MainActivity).apply {
-                setViewDimensions(200, 300)
+                setViewDimensions(150, 150)
                 setBorderLine(Color.TRANSPARENT, Color.BLUE, 10)
             })
         }
