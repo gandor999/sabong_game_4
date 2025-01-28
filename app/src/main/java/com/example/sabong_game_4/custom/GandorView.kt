@@ -6,14 +6,24 @@ import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 
-class GandorView(context: Context): View(context), ICustomView {
+class GandorView(context: Context) : View(context), ICustomView {
     override fun setViewDimensions(width: Int, height: Int) {
-        Log.d("Gandor", "resources.displayMetrics.widthPixels: ${resources.displayMetrics.widthPixels}")
-        Log.d("Gandor", "resources.displayMetrics.heightPixels: ${resources.displayMetrics.heightPixels}")
+        Log.d(
+            "Gandor",
+            "resources.displayMetrics.widthPixels: ${resources.displayMetrics.widthPixels}"
+        )
+        Log.d(
+            "Gandor",
+            "resources.displayMetrics.heightPixels: ${resources.displayMetrics.heightPixels}"
+        )
 
         // add ratio conversion
         // was developing the dimensions on a Pixel 3a XL API 34
-        layoutParams = LinearLayout.LayoutParams(width, height)
+        // ratio is (150 / 2160) = (x / widthPixels) => x = (150 * widthPixels / 2160)
+        layoutParams = LinearLayout.LayoutParams(
+            (width * resources.displayMetrics.widthPixels) / 2160,
+            (height * resources.displayMetrics.heightPixels) / 1020
+        )
     }
 
     override fun setBorderLine(backgroundColor: Int, borderColor: Int, lineWidth: Int) {
