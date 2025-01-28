@@ -19,7 +19,7 @@ class GameWorld(
         worldContext.get()?.let {
             worldLayout.get()?.apply {
                 for (playableCharacter in playableCharacters) {
-                    addView(playableCharacter)
+                    if (playableCharacter.isPlayableCharacter) addView(playableCharacter)
                 }
             }
         }
