@@ -1,22 +1,26 @@
 package com.example.sabong_game_4.game_world
 
 import android.content.Context
-import android.graphics.Color
 import android.view.ViewGroup
-import com.example.sabong_game_4.custom.GandorView
+import com.example.sabong_game_4.game_world.playables.GameCharacter
 import java.lang.ref.WeakReference
 
 class GameWorld(
     private val worldLayout: WeakReference<ViewGroup>,
-    private val worldContext: WeakReference<Context>
+    private val worldContext: WeakReference<Context>,
 ) : IGameWorld {
+    private val playableCharacters: MutableList<GameCharacter> = mutableListOf()
+
+    override fun addPlayableCharacter(character: GameCharacter) {
+        playableCharacters.add(character)
+    }
+
     override fun initGame() {
         worldContext.get()?.let {
             worldLayout.get()?.apply {
-                addView(GandorView(worldContext.get()!!).apply {
-                    setViewDimensions(150, 150)
-                    setBorderLine(Color.TRANSPARENT, Color.BLUE, 10)
-                })
+                for (playableCharacter in playableCharacters) {
+                    addView(playableCharacter)
+                }
             }
         }
     }

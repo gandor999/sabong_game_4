@@ -5,7 +5,7 @@ import android.graphics.drawable.GradientDrawable
 import android.view.View
 import android.widget.LinearLayout
 
-class GandorView(context: Context) : View(context), ICustomView {
+open class GandorView(context: Context) : View(context), ICustomView {
     override fun setViewDimensions(width: Int, height: Int) {
         // was developing the dimensions on a Pixel 3a XL API 34
         // ratio is (150 / 2160) = (x / widthPixels) => x = (150 * widthPixels / 2160)
