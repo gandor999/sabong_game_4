@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.LinearLayout
 
 open class GandorView(context: Context) : View(context), ICustomView {
+    var velocity = 0f
+
     override fun setViewDimensions(width: Int, height: Int) {
         // was developing the dimensions on a Pixel 3a XL API 34
         // ratio is (150 / 2160) = (x / widthPixels) => x = (150 * widthPixels / 2160)
