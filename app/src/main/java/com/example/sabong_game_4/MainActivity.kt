@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.example.sabong_game_4.config.GlobalConstants
 import com.example.sabong_game_4.config.PhoneConfigurator
 import com.example.sabong_game_4.game_world.GameWorldBuilder
 import com.example.sabong_game_4.game_world.IGameWorld
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         gameWorld = GameWorldBuilder.buildWorld()
 
         gameWorld?.apply {
-            addPlayableCharacter(PlayerOne(this@MainActivity))
+            addGameCharacter(PlayerOne(this@MainActivity))
             initGame()
             runGameLoop()
         }

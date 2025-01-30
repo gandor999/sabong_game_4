@@ -5,7 +5,7 @@ interface IGameCharacter {
 
     fun attack()
 
-    fun move(move: Movement)
+    fun move(move: Movement, acceleration: Float)
 }
 
 enum class Movement {

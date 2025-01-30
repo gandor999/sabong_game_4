@@ -4,8 +4,6 @@ import android.content.Context
 import com.example.sabong_game_4.custom.GandorView
 
 open class GameCharacter(context: Context): GandorView(context), IGameCharacter {
-    var isPlayableCharacter = false
-
     override fun jump() {
         TODO("Not yet implemented")
     }
@@ -14,7 +12,7 @@ open class GameCharacter(context: Context): GandorView(context), IGameCharacter 
         TODO("Not yet implemented")
     }
 
-    override fun move(move: Movement) {
+    override fun move(move: Movement, acceleration: Float) {
         TODO("Not yet implemented")
     }
 }
