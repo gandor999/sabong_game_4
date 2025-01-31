@@ -7,10 +7,13 @@ To do:
 - [x] Make separate thread for game loop
 - [x] Make gravity
 - [x] Make controller class
-- [ ] Attach player one to controller
-- [ ] Refactor player one in way that it doesn't get buggy when set to the controller, or you know test it out first, if its fine then just got ahead with it
-- [ ] Make a new layer for the controls
-- [ ] Add left and right control on the left side of screen
+- [x] Fix scaling
+- [ ] Readjust jumping button
+- [ ] Refactor scaling to having another object do it instead
+- [x] Attach player one to controller
+- [x] Refactor player one in way that it doesn't get buggy when set to the controller, or you know test it out first, if its fine then just got ahead with it
+- [x] Make a new layer for the controls
+- [x] Add left and right control on the left side of screen
 - [ ] Add Buttons for attack on right hand side
 - [ ] Add Button for jump on right hand side
 - [ ] Refine gravity

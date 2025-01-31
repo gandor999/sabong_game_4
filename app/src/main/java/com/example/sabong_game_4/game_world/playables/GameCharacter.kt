@@ -4,6 +4,9 @@ import android.content.Context
 import com.example.sabong_game_4.custom.GandorView
 
 open class GameCharacter(context: Context): GandorView(context), IGameCharacter {
+    var velocity = 0f
+    var maxHorizontalVelocity = 10;
+
     override fun jump() {
         TODO("Not yet implemented")
     }

@@ -4,9 +4,9 @@ import android.content.Context
 import android.view.ViewGroup
 
 interface IGameWorldBuilder {
-    fun setWorld(worldLayout: ViewGroup?, worldContext: Context)
+    fun setWorld(worldLayout: ViewGroup?, worldContext: Context): GameWorldBuilder
 
     fun buildWorld(): IGameWorld?
 
-    fun setWorldBackground(backgroundColor: Int, borderColor: Int, lineWidth: Int, padding: Int)
+    fun setWorldBackground(backgroundColor: Int, borderColor: Int, lineWidth: Int, padding: Int): GameWorldBuilder
 }
