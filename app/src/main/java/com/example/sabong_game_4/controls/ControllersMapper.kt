@@ -60,8 +60,8 @@ object ControllersMapper : IControllersMapper {
 
                 val jumpButton = JumpButton(context, character).apply {
                     setViewDimensions(
-                        width = 150,
-                        height = 150,
+                        width = 180,
+                        height = 180,
                         true
                     )
 
@@ -71,10 +71,33 @@ object ControllersMapper : IControllersMapper {
                         lineWidth = 10
                     )
 
-//                    translationX = phoneWidth.toFloat() - scaledWidth?.toFloat()!! + (GlobalConstants.FULL_SCREEN_PADDING)
+                    // why - (2 * GlobalConstants.FULL_SCREEN_PADDING) is needed for x i don't know... but hey it works! Now, do this for every x!
+                    val adjustXToScreenFit = phoneWidth.toFloat() - (2 * GlobalConstants.FULL_SCREEN_PADDING) - scaledWidth?.toFloat()!!
+                    val adjustYToScreenFit = phoneHeight.toFloat() - scaledHeight?.toFloat()!!
 
-                    x = phoneWidth.toFloat() - scaledWidth?.toFloat()!! - (2 * GlobalConstants.FULL_SCREEN_PADDING)
-//                    y = phoneHeight.toFloat() - 150 + (2 * GlobalConstants.FULL_SCREEN_PADDING)
+                    x = adjustXToScreenFit - (phoneWidth.toFloat() / 9)
+                    y = adjustYToScreenFit - (phoneHeight.toFloat() / 20)
+                }
+
+                val attackButton = AttackButton(context, character).apply {
+                    setViewDimensions(
+                        width = 180,
+                        height = 180,
+                        true
+                    )
+
+                    setBorderLine(
+                        borderColor = Color.RED,
+                        backgroundColor = Color.TRANSPARENT,
+                        lineWidth = 10
+                    )
+
+                    // why - (2 * GlobalConstants.FULL_SCREEN_PADDING) is needed for x i don't know... but hey it works! Now, do this for every x!
+                    val adjustXToScreenFit = phoneWidth.toFloat() - (2 * GlobalConstants.FULL_SCREEN_PADDING) - scaledWidth?.toFloat()!!
+                    val adjustYToScreenFit = phoneHeight.toFloat() - scaledHeight?.toFloat()!!
+
+                    x = adjustXToScreenFit - (phoneWidth.toFloat() / 70)
+                    y = adjustYToScreenFit - (phoneHeight.toFloat() / 5)
                 }
 
                 leftButton.post {
@@ -87,7 +110,8 @@ object ControllersMapper : IControllersMapper {
                 return listOf(
                     leftButton,
                     rightButton,
-                    jumpButton
+                    jumpButton,
+                    attackButton
                 )
             }
 

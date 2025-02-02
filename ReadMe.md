@@ -8,14 +8,18 @@ To do:
 - [x] Make gravity
 - [x] Make controller class
 - [x] Fix scaling
-- [ ] Readjust jumping button
+- [x] Readjust jumping button
 - [ ] Refactor scaling to having another object do it instead
 - [x] Attach player one to controller
 - [x] Refactor player one in way that it doesn't get buggy when set to the controller, or you know test it out first, if its fine then just got ahead with it
 - [x] Make a new layer for the controls
 - [x] Add left and right control on the left side of screen
-- [ ] Add Buttons for attack on right hand side
-- [ ] Add Button for jump on right hand side
+- [x] Add Buttons for attack on right hand side
+- [x] Add Button for jump on right hand side
+- [x] Add states enum
+- [x] Add jumping mechanism on jump
+- [ ] Fix Jumping mechanism bug, in JumpButton
+- [ ] Make a ratio for the gravity with regards to fps, right now it doesn't look consistent
 - [ ] Refine gravity
 - [ ] Add logic for collision
 - [ ] Add logic for attack collision

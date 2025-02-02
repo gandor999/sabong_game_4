@@ -1,13 +1,20 @@
 package com.example.sabong_game_4.controls
 
 import android.content.Context
-import com.example.sabong_game_4.config.GlobalConstants
+import android.os.Build
+import android.util.Log
+import android.view.MotionEvent
+import androidx.annotation.RequiresApi
 import com.example.sabong_game_4.custom.GandorView
-import com.example.sabong_game_4.game_world.playables.Movement
 import com.example.sabong_game_4.game_world.playables.PlayableCharacter
 
-open class MovementControl(context: Context, private var playableCharacter: PlayableCharacter) : IMovementControl, GandorView(context) {
-    override fun moveToDirection(direction: Movement) {
-        playableCharacter.move(direction, GlobalConstants.HORIZONTAL_ACCELERATION)
+@RequiresApi(Build.VERSION_CODES.R)
+open class MovementControl(context: Context, var playableCharacter: PlayableCharacter) : IMovementControl, GandorView(context) {
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        excecute()
+        return super.onTouchEvent(event)
+    }
+
+    override fun excecute() {
     }
 }

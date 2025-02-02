@@ -6,7 +6,6 @@ import android.os.Build
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import com.example.sabong_game_4.config.GlobalConstants
-import com.example.sabong_game_4.controls.IMovementControl
 import com.example.sabong_game_4.controls.MovementControl
 import com.example.sabong_game_4.game_world.playables.GameCharacter
 import java.lang.ref.WeakReference
@@ -61,14 +60,14 @@ class GameWorld(
     override fun doGravityEffect(gameCharacters: List<GameCharacter>) {
         val realPhoneScreenHeight =
             (worldContext.get() as Activity).windowManager.maximumWindowMetrics.bounds.height()
-        val acceleration = 0.0000009f
+        val acceleration = 0.00000009f
 
         for (gameCharacter in gameCharacters) {
-            if (gameCharacter.y + gameCharacter.velocity <= (realPhoneScreenHeight - GlobalConstants.FULL_SCREEN_PADDING - gameCharacter.height)) {
-                gameCharacter.y += gameCharacter.velocity
-                gameCharacter.velocity += acceleration
+            if (gameCharacter.y + gameCharacter.velocityY < (realPhoneScreenHeight - GlobalConstants.FULL_SCREEN_PADDING - gameCharacter.height)) {
+                gameCharacter.y += gameCharacter.velocityY
+                gameCharacter.velocityY += acceleration
             } else {
-                gameCharacter.velocity = 0f
+                gameCharacter.velocityY = 0f
                 gameCharacter.y += (realPhoneScreenHeight - GlobalConstants.FULL_SCREEN_PADDING - gameCharacter.height) - gameCharacter.y
             }
         }

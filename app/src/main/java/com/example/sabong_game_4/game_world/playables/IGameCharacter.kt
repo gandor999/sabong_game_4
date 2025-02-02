@@ -5,12 +5,5 @@ interface IGameCharacter {
 
     fun attack()
 
-    fun move(move: Movement, acceleration: Float)
-}
-
-enum class Movement {
-    Right,
-    Left,
-    Up,
-    Down
+    fun initState()
 }

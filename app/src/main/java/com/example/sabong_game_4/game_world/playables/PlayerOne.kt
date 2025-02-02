@@ -16,5 +16,6 @@ class PlayerOne(context: Context) : PlayableCharacter(
     init {
         setViewDimensions(width, height, true)
         setBorderLine(Color.TRANSPARENT, Color.BLUE, 10)
+        initState()
     }
 }
