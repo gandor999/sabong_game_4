@@ -12,22 +12,16 @@ open class GameCharacter(context: Context): GandorView(context), IGameCharacter 
     var velocityY = 0f
     var maxHorizontalVelocity = 10;
     var currentState = States.Idle
+    var jumpWasPressed = false
 
     override fun jump() {
-//        val experimentLimitForY = 300
-//        val groundY = y
-//        val limit = groundY - experimentLimitForY
-//        while (y >= limit) {
-//            y -= 1
-//            velocityY -= 0f
-//        }
+        jumpWasPressed = true
     }
 
     override fun attack() {
         TODO("Not yet implemented")
     }
 
-    // This is pretty bad design I think, there's gotta be something better?
     override fun initState() {
         val choreographer = Choreographer.getInstance()
         val frameCallback = object : Choreographer.FrameCallback {

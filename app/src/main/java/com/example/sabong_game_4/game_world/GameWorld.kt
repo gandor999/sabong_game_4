@@ -3,9 +3,11 @@ package com.example.sabong_game_4.game_world
 import android.app.Activity
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import com.example.sabong_game_4.config.GlobalConstants
+import com.example.sabong_game_4.config.Scaler
 import com.example.sabong_game_4.controls.MovementControl
 import com.example.sabong_game_4.game_world.playables.GameCharacter
 import java.lang.ref.WeakReference
@@ -54,22 +56,42 @@ class GameWorld(
      * Updates the game world and is running on a separate thread
      * */
     override fun updateWorld() {
-        doGravityEffect(gameCharacters)
-    }
-
-    override fun doGravityEffect(gameCharacters: List<GameCharacter>) {
         val realPhoneScreenHeight =
             (worldContext.get() as Activity).windowManager.maximumWindowMetrics.bounds.height()
-        val acceleration = 0.00000009f
+        Thread.sleep(1)
 
         for (gameCharacter in gameCharacters) {
-            if (gameCharacter.y + gameCharacter.velocityY < (realPhoneScreenHeight - GlobalConstants.FULL_SCREEN_PADDING - gameCharacter.height)) {
-                gameCharacter.y += gameCharacter.velocityY
-                gameCharacter.velocityY += acceleration
-            } else {
-                gameCharacter.velocityY = 0f
-                gameCharacter.y += (realPhoneScreenHeight - GlobalConstants.FULL_SCREEN_PADDING - gameCharacter.height) - gameCharacter.y
+            val acceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, 0.009f)
+            val groundLevel = realPhoneScreenHeight - GlobalConstants.FULL_SCREEN_PADDING - gameCharacter.height
+            val jumpLimit = Scaler.scaleFloatOnHeight(gameCharacter.resources, 888f)
+            val jumpAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, 0.07f)
+
+            if (gameCharacter.jumpWasPressed) {
+                doJumpEffect(gameCharacter, jumpAcceleration, jumpLimit)
+                continue
             }
+
+            doGravityEffect(gameCharacter, acceleration, groundLevel)
+        }
+    }
+
+    override fun doJumpEffect(gameCharacter: GameCharacter, acceleration: Float, jumpLimit: Float) {
+        if (gameCharacter.y + gameCharacter.velocityY - acceleration > jumpLimit) {
+            gameCharacter.velocityY -= acceleration
+            gameCharacter.y += gameCharacter.velocityY
+        } else {
+            gameCharacter.jumpWasPressed = false
+            Log.d("Gandor", "updateWorld | jumpLimit: $jumpLimit | gameCharacter.velocityY: ${gameCharacter.velocityY}")
+        }
+    }
+
+    override fun doGravityEffect(gameCharacter: GameCharacter, acceleration: Float, groundLevel: Int) {
+        if (gameCharacter.y + gameCharacter.velocityY < groundLevel) {
+            gameCharacter.y += gameCharacter.velocityY
+            gameCharacter.velocityY += acceleration
+        } else {
+            gameCharacter.velocityY = 0f
+            gameCharacter.y = groundLevel.toFloat()
         }
     }
 }

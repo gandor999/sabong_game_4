@@ -18,7 +18,9 @@ To do:
 - [x] Add Button for jump on right hand side
 - [x] Add states enum
 - [x] Add jumping mechanism on jump
-- [ ] Fix Jumping mechanism bug, in JumpButton
+- [x] Fix Jumping mechanism bug, in JumpButton
+- [ ] Refine jumping action to scale
+- [ ] Refactor movement logic to another manager
 - [ ] Make a ratio for the gravity with regards to fps, right now it doesn't look consistent
 - [ ] Refine gravity
 - [ ] Add logic for collision
