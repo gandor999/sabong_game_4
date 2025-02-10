@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import androidx.annotation.RequiresApi
-import com.example.sabong_game_4.controls.MovementControl
 
 @RequiresApi(Build.VERSION_CODES.R)
 class PlayerOne(context: Context) : PlayableCharacter(
@@ -12,6 +11,12 @@ class PlayerOne(context: Context) : PlayableCharacter(
 ) {
     private val width = 150
     private val height = 150
+
+    override val originalJumpAmmo: Int
+        get() = 20
+
+    // this must be initialized
+    override var jumpAmmo: Int = originalJumpAmmo
 
     init {
         setViewDimensions(width, height, true)

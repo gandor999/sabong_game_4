@@ -7,11 +7,11 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\geodo\.android\avd\Pixel_3a_XL_API_34.avd" />
+            <value value="C:\Users\geodo\.android\avd\4.65_720p_Galaxy_Nexus_API_34.avd" />
           </Key>
         </deviceKey>
       </Target>
     </runningDeviceTargetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2025-02-09T11:56:20.839958100Z" />
+    <timeTargetWasSelectedWithDropDown value="2025-02-10T09:12:38.583036500Z" />
   </component>
 </project>

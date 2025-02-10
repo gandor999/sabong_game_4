@@ -1,6 +1,5 @@
 package com.example.sabong_game_4.game_world
 
-import com.example.sabong_game_4.controls.IMovementControl
 import com.example.sabong_game_4.controls.MovementControl
 import com.example.sabong_game_4.game_world.playables.GameCharacter
 
@@ -15,7 +14,7 @@ interface IGameWorld {
 
     fun updateWorld()
 
-    fun doJumpEffect(gameCharacter: GameCharacter, acceleration: Float, jumpLimit: Float)
+    fun doJumpEffect(gameCharacter: GameCharacter, acceleration: Float)
 
     fun doGravityEffect(gameCharacter: GameCharacter, acceleration: Float, groundLevel: Int)
 }

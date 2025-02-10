@@ -3,7 +3,6 @@ package com.example.sabong_game_4.game_world
 import android.app.Activity
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import com.example.sabong_game_4.config.GlobalConstants
@@ -61,27 +60,27 @@ class GameWorld(
         Thread.sleep(1)
 
         for (gameCharacter in gameCharacters) {
-            val acceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, 0.009f)
+            val gravityAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, 0.01f)
             val groundLevel = realPhoneScreenHeight - GlobalConstants.FULL_SCREEN_PADDING - gameCharacter.height
-            val jumpLimit = Scaler.scaleFloatOnHeight(gameCharacter.resources, 888f)
-            val jumpAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, 0.07f)
+            val jumpAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, .08f)
 
             if (gameCharacter.jumpWasPressed) {
-                doJumpEffect(gameCharacter, jumpAcceleration, jumpLimit)
+                doJumpEffect(gameCharacter, jumpAcceleration)
                 continue
             }
 
-            doGravityEffect(gameCharacter, acceleration, groundLevel)
+            doGravityEffect(gameCharacter, gravityAcceleration, groundLevel)
         }
     }
 
-    override fun doJumpEffect(gameCharacter: GameCharacter, acceleration: Float, jumpLimit: Float) {
-        if (gameCharacter.y + gameCharacter.velocityY - acceleration > jumpLimit) {
+    override fun doJumpEffect(gameCharacter: GameCharacter, acceleration: Float) {
+        if (gameCharacter.jumpAmmo > 0) {
             gameCharacter.velocityY -= acceleration
             gameCharacter.y += gameCharacter.velocityY
+            gameCharacter.jumpAmmo -= 1
         } else {
             gameCharacter.jumpWasPressed = false
-            Log.d("Gandor", "updateWorld | jumpLimit: $jumpLimit | gameCharacter.velocityY: ${gameCharacter.velocityY}")
+            gameCharacter.jumpAmmo = gameCharacter.originalJumpAmmo
         }
     }
 

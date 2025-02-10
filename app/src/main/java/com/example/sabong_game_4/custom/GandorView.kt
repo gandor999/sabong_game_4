@@ -3,12 +3,9 @@ package com.example.sabong_game_4.custom
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
 import android.os.Build
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
-import com.example.sabong_game_4.MainActivity
 
 @RequiresApi(Build.VERSION_CODES.R)
 open class GandorView(context: Context) : View(context), ICustomView {

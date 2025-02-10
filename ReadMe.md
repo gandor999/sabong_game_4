@@ -9,7 +9,7 @@ To do:
 - [x] Make controller class
 - [x] Fix scaling
 - [x] Readjust jumping button
-- [ ] Refactor scaling to having another object do it instead
+- [x] Refactor scaling to having another object do it instead
 - [x] Attach player one to controller
 - [x] Refactor player one in way that it doesn't get buggy when set to the controller, or you know test it out first, if its fine then just got ahead with it
 - [x] Make a new layer for the controls
@@ -19,10 +19,10 @@ To do:
 - [x] Add states enum
 - [x] Add jumping mechanism on jump
 - [x] Fix Jumping mechanism bug, in JumpButton
-- [ ] Refine jumping action to scale
-- [ ] Refactor movement logic to another manager
-- [ ] Make a ratio for the gravity with regards to fps, right now it doesn't look consistent
-- [ ] Refine gravity
+- [x] Refine jumping action to scale
+- [x] Refine gravity
+- [ ] Add moving right and left logic
+- [ ] Attach moving right and left controls
 - [ ] Add logic for collision
 - [ ] Add logic for attack collision
 - [ ] Add life bars

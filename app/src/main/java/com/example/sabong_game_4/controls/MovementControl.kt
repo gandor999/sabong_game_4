@@ -2,7 +2,6 @@ package com.example.sabong_game_4.controls
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import android.view.MotionEvent
 import androidx.annotation.RequiresApi
 import com.example.sabong_game_4.custom.GandorView

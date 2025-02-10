@@ -6,11 +6,6 @@ import android.graphics.Color
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.core.view.doOnAttach
-import androidx.core.view.doOnLayout
-import androidx.core.view.doOnNextLayout
-import androidx.core.view.doOnPreDraw
-import com.example.sabong_game_4.MainActivity
 import com.example.sabong_game_4.config.GlobalConstants
 import com.example.sabong_game_4.game_world.playables.PlayableCharacter
 import com.example.sabong_game_4.game_world.playables.PlayerOne

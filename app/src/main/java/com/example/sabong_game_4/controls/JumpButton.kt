@@ -2,7 +2,6 @@ package com.example.sabong_game_4.controls
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.sabong_game_4.game_world.playables.PlayableCharacter
 import com.example.sabong_game_4.states.States
@@ -13,6 +12,8 @@ class JumpButton(context: Context, playableCharacter: PlayableCharacter) :
 
     override fun excecute() {
         super.excecute()
-        playableCharacter.jump()
+        if (playableCharacter.currentState != States.Jumping && playableCharacter.currentState != States.Falling) {
+            playableCharacter.jump()
+        }
     }
 }

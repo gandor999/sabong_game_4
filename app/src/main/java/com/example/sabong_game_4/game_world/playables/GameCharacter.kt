@@ -8,11 +8,13 @@ import com.example.sabong_game_4.custom.GandorView
 import com.example.sabong_game_4.states.States
 
 @RequiresApi(Build.VERSION_CODES.R)
-open class GameCharacter(context: Context): GandorView(context), IGameCharacter {
+abstract class GameCharacter(context: Context): GandorView(context), IGameCharacter {
     var velocityY = 0f
     var maxHorizontalVelocity = 10;
     var currentState = States.Idle
     var jumpWasPressed = false
+    open val originalJumpAmmo = 20
+    abstract var jumpAmmo: Int
 
     override fun jump() {
         jumpWasPressed = true
