@@ -10,8 +10,8 @@ import com.example.sabong_game_4.states.States
 class JumpButton(context: Context, playableCharacter: PlayableCharacter) :
     RightSideController(context, playableCharacter) {
 
-    override fun excecute() {
-        super.excecute()
+    override fun execute() {
+        super.execute()
         if (playableCharacter.currentState != States.Jumping && playableCharacter.currentState != States.Falling) {
             playableCharacter.jump()
         }

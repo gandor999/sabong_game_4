@@ -13,7 +13,7 @@ class PlayerOne(context: Context) : PlayableCharacter(
     private val height = 150
 
     override val originalJumpAmmo: Int
-        get() = 20
+        get() = 30
 
     // this must be initialized
     override var jumpAmmo: Int = originalJumpAmmo

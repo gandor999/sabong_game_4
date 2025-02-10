@@ -57,16 +57,36 @@ class GameWorld(
     override fun updateWorld() {
         val realPhoneScreenHeight =
             (worldContext.get() as Activity).windowManager.maximumWindowMetrics.bounds.height()
-        Thread.sleep(1)
+        Thread.sleep(10L)
 
         for (gameCharacter in gameCharacters) {
-            val gravityAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, 0.01f)
+            val gravityAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, 0.1f)
             val groundLevel = realPhoneScreenHeight - GlobalConstants.FULL_SCREEN_PADDING - gameCharacter.height
-            val jumpAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, .08f)
+            val jumpAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, .2f)
 
             if (gameCharacter.jumpWasPressed) {
                 doJumpEffect(gameCharacter, jumpAcceleration)
                 continue
+            }
+
+            if (gameCharacter.isStoppingRightMove) {
+                Thread.sleep(10L)
+                if (gameCharacter.velocityX > 0f) {
+                    gameCharacter.velocityX = maxOf(0f, gameCharacter.velocityX - gameCharacter.accelerationX)
+                    gameCharacter.x += gameCharacter.velocityX
+                } else {
+                    gameCharacter.isStoppingRightMove = false
+                }
+            }
+
+            if (gameCharacter.isStoppingLeftMove) {
+                Thread.sleep(10L)
+                if (gameCharacter.velocityX > 0f) {
+                    gameCharacter.velocityX = maxOf(0f, gameCharacter.velocityX - gameCharacter.accelerationX)
+                    gameCharacter.x -= gameCharacter.velocityX
+                } else {
+                    gameCharacter.isStoppingLeftMove = false
+                }
             }
 
             doGravityEffect(gameCharacter, gravityAcceleration, groundLevel)

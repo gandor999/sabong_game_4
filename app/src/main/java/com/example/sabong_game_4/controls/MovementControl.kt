@@ -10,10 +10,10 @@ import com.example.sabong_game_4.game_world.playables.PlayableCharacter
 @RequiresApi(Build.VERSION_CODES.R)
 open class MovementControl(context: Context, var playableCharacter: PlayableCharacter) : IMovementControl, GandorView(context) {
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        excecute()
+        execute()
         return super.onTouchEvent(event)
     }
 
-    override fun excecute() {
+    override fun execute() {
     }
 }

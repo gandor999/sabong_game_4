@@ -23,9 +23,10 @@ To do:
 - [x] Refine gravity
 - [x] Add moving right logic
 - [ ] Refine moving right
-- [ ] Fix on MotionEvent.ActionMove bug, it accelerates the object on dragging
-- [ ] Add moving left logic
-- [ ] Attach moving right and left controls
+- [ ] Refactor moving right and left inside game world instead and see what happens, right now it just seems buggy as if its not synchronized
+- [x] Fix on MotionEvent.ActionMove bug, it accelerates the object on dragging
+- [x] Add moving left logic
+- [x] Attach moving right and left controls
 - [ ] Add logic for collision
 - [ ] Add logic for attack collision
 - [ ] Add life bars

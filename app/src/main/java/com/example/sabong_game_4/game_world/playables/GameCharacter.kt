@@ -2,8 +2,10 @@ package com.example.sabong_game_4.game_world.playables
 
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import android.view.Choreographer
 import androidx.annotation.RequiresApi
+import com.example.sabong_game_4.config.Scaler
 import com.example.sabong_game_4.custom.GandorView
 import com.example.sabong_game_4.states.States
 
@@ -13,7 +15,11 @@ abstract class GameCharacter(context: Context): GandorView(context), IGameCharac
     var velocityX = 0f;
     var currentState = States.Idle
     var jumpWasPressed = false
+    var isStoppingRightMove = false
+    var isStoppingLeftMove = false
+    open val terminalVelocityX = 30
     open val originalJumpAmmo = 20
+    open val accelerationX = 2
     abstract var jumpAmmo: Int
 
     override fun jump() {
@@ -25,14 +31,19 @@ abstract class GameCharacter(context: Context): GandorView(context), IGameCharac
     }
 
     override fun moveRight() {
-        x += 1
+        Log.d("Gandor", "GameCharacter | moveRight | velocityX: $velocityX")
+        x += Scaler.scaleFloatOnWidth(resources, velocityX)
+//        if (velocityX < terminalVelocityX) velocityX += Scaler.scaleInt(resources, accelerationX)
+        if (velocityX < terminalVelocityX) velocityX += accelerationX
     }
 
     override fun moveLeft() {
-        TODO("Not yet implemented")
+        x -= Scaler.scaleFloatOnWidth(resources, velocityX)
+//        if (velocityX < terminalVelocityX) velocityX += Scaler.scaleInt(resources, accelerationX)
+        if (velocityX < terminalVelocityX) velocityX += accelerationX
     }
 
-    override fun initState() {
+    override fun initState() { // revisit this, this isn't very consistent, especially for running and idle
         val choreographer = Choreographer.getInstance()
         val frameCallback = object : Choreographer.FrameCallback {
             private var lastX = this@GameCharacter.x
@@ -46,13 +57,15 @@ abstract class GameCharacter(context: Context): GandorView(context), IGameCharac
                     lastY < this@GameCharacter.y -> {
                         States.Falling
                     }
-                    lastX > this@GameCharacter.x -> {
+                    lastX < this@GameCharacter.x -> {
                         States.RunningRight
                     }
-                    lastX < this@GameCharacter.x -> {
+                    lastX > this@GameCharacter.x -> {
                         States.RunningLeft
                     }
-                    else -> States.Idle
+                    else -> {
+                        States.Idle
+                    }
                 }
 
                 lastX = this@GameCharacter.x
