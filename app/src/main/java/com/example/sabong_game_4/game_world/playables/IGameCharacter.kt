@@ -5,5 +5,9 @@ interface IGameCharacter {
 
     fun attack()
 
+    fun moveRight()
+
+    fun moveLeft()
+
     fun initState()
 }

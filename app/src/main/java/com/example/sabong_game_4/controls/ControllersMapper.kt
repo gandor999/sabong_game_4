@@ -95,13 +95,6 @@ object ControllersMapper : IControllersMapper {
                     y = adjustYToScreenFit - (phoneHeight.toFloat() / 5)
                 }
 
-                leftButton.post {
-                    Log.d(
-                        "Gandor",
-                        "phoneHeight: $phoneHeight | phoneWidth: $phoneWidth | leftButton.width: ${leftButton.width} | leftButton.height: ${leftButton.height} | jumpButton.x: ${jumpButton.x} | jumpButton.scaledWidth: ${jumpButton.scaledWidth} | jumpButton.width: ${jumpButton.width}"
-                    )
-                }
-
                 return listOf(
                     leftButton,
                     rightButton,

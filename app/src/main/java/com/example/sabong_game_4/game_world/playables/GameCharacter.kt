@@ -10,7 +10,7 @@ import com.example.sabong_game_4.states.States
 @RequiresApi(Build.VERSION_CODES.R)
 abstract class GameCharacter(context: Context): GandorView(context), IGameCharacter {
     var velocityY = 0f
-    var maxHorizontalVelocity = 10;
+    var velocityX = 0f;
     var currentState = States.Idle
     var jumpWasPressed = false
     open val originalJumpAmmo = 20
@@ -21,6 +21,14 @@ abstract class GameCharacter(context: Context): GandorView(context), IGameCharac
     }
 
     override fun attack() {
+        TODO("Not yet implemented")
+    }
+
+    override fun moveRight() {
+        x += 1
+    }
+
+    override fun moveLeft() {
         TODO("Not yet implemented")
     }
 
@@ -38,8 +46,11 @@ abstract class GameCharacter(context: Context): GandorView(context), IGameCharac
                     lastY < this@GameCharacter.y -> {
                         States.Falling
                     }
-                    lastX != this@GameCharacter.x -> {
-                        States.Running
+                    lastX > this@GameCharacter.x -> {
+                        States.RunningRight
+                    }
+                    lastX < this@GameCharacter.x -> {
+                        States.RunningLeft
                     }
                     else -> States.Idle
                 }

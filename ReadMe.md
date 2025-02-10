@@ -21,7 +21,10 @@ To do:
 - [x] Fix Jumping mechanism bug, in JumpButton
 - [x] Refine jumping action to scale
 - [x] Refine gravity
-- [ ] Add moving right and left logic
+- [x] Add moving right logic
+- [ ] Refine moving right
+- [ ] Fix on MotionEvent.ActionMove bug, it accelerates the object on dragging
+- [ ] Add moving left logic
 - [ ] Attach moving right and left controls
 - [ ] Add logic for collision
 - [ ] Add logic for attack collision

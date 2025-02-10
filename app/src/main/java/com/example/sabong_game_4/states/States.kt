@@ -4,6 +4,7 @@ enum class States {
     Jumping,
     Attacking,
     Idle,
-    Running,
+    RunningRight,
+    RunningLeft,
     Falling
 }
