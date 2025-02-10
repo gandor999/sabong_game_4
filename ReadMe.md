@@ -31,3 +31,6 @@ To do:
 - [ ] Add capability to connect via wifi
 - [ ] Add capability for two phones to connect to a player
 - [ ] Add capability for player 2 to use second chicken
+
+Current look:
+![screen.png](screen.png)
