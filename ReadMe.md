@@ -21,8 +21,8 @@ To do:
 - [x] Fix Jumping mechanism bug, in JumpButton
 - [x] Refine jumping action to scale
 - [x] Refine gravity
-- [ ] Refactor current state to be more than one
-- [ ] Refine jumping while stopping moving
+- [x] Refactor current state to be more than one
+- [x] Refine jumping while stopping moving
 - [ ] Refine acceleration scaling
 - [x] Add moving right logic
 - [x] Refine moving right

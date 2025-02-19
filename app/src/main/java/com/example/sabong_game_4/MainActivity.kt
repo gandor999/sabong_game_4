@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
             setToLandScape(this@MainActivity)
         }
 
-        HealthChecker.logFps()
+//        HealthChecker.logFps()
 
         val gameWorld = GameWorldBuilder.setWorld(topLevelLayout, this).setWorldBackground(
             backgroundColor = Color.TRANSPARENT,

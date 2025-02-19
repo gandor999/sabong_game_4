@@ -6,28 +6,31 @@ import com.example.sabong_game_4.game_world.playables.GameCharacter
 import com.example.sabong_game_4.states.States
 
 @RequiresApi(Build.VERSION_CODES.R)
-object EffectsManager: IEffectsManager {
+object EffectsManager : IEffectsManager {
     override fun doDecellerationEffect(gameCharacter: GameCharacter) {
-        val isJumpingOrFalling =
-            gameCharacter.currentState == States.Jumping || gameCharacter.currentState == States.Falling
+//        val isJumpingOrFalling =
+//            gameCharacter.currentState.getCurrentState()
+//                .contains(States.Jumping) || gameCharacter.currentState.getCurrentState()
+//                .contains(States.Falling)
         val newVelocity = maxOf(0f, gameCharacter.velocityX - gameCharacter.accelerationX)
 
-        when(gameCharacter.currentState) {
-            States.StoppingRunningRight, States.StoppingRunningLeft -> {
-                Thread.sleep(10L)
-                if (gameCharacter.velocityX > 0f) {
-                    gameCharacter.velocityX = newVelocity
-                    if (gameCharacter.currentState == States.StoppingRunningRight) {
-                        gameCharacter.x += gameCharacter.velocityX
-                    } else {
-                        gameCharacter.x -= gameCharacter.velocityX
-                    }
+        if (gameCharacter.characterState.getCurrentState()
+                .contains(States.StoppingRunningRight) || gameCharacter.characterState.getCurrentState()
+                .contains(States.StoppingRunningLeft)
+        ) {
+            Thread.sleep(10L)
+            if (gameCharacter.velocityX > 0f) {
+                gameCharacter.velocityX = newVelocity
+                if (gameCharacter.characterState.getCurrentState()
+                        .contains(States.StoppingRunningRight)
+                ) {
+                    gameCharacter.x += gameCharacter.velocityX
                 } else {
-                    if (!isJumpingOrFalling) gameCharacter.currentState = States.Idle
+                    gameCharacter.x -= gameCharacter.velocityX
                 }
+            } else {
+                    gameCharacter.characterState.toIdle()
             }
-
-            else -> {}
         }
     }
 
@@ -50,19 +53,12 @@ object EffectsManager: IEffectsManager {
         if (gameCharacter.y + gameCharacter.velocityY < groundLevel) {
             gameCharacter.y += gameCharacter.velocityY
             gameCharacter.velocityY += acceleration
-            gameCharacter.currentState = States.Falling
+            gameCharacter.characterState.toFalling()
         } else {
             gameCharacter.velocityY = 0f
             gameCharacter.y = groundLevel.toFloat()
 
-            // TODO: refactor this
-            if (!listOf(
-                    States.StoppingRunningLeft,
-                    States.StoppingRunningRight,
-                    States.RunningRight,
-                    States.StoppingRunningLeft
-                ).contains(gameCharacter.currentState)
-            ) gameCharacter.currentState = States.Idle
+            if (!gameCharacter.characterState.isMovingHorizontally()) gameCharacter.characterState.toIdle()
         }
     }
 }
