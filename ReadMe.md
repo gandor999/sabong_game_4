@@ -25,13 +25,14 @@ To do:
 - [x] Refine gravity
 - [x] Refactor current state to be more than one
 - [x] Refine jumping while stopping moving
-- [ ] Refine acceleration scaling
+- [ ] Refine acceleration scaling to be more intuitive to handle
 - [x] Add moving right logic
 - [x] Refine moving right
 - [x] Fix on MotionEvent.ActionMove bug, it accelerates the object on dragging
 - [x] Add moving left logic
 - [x] Attach moving right and left controls
 - [ ] Add logic for collision
+- [ ] Limit characters within the borders of the screen
 - [ ] Add logic for attack collision
 - [ ] Add life bars
 - [ ] Add menu for one player game or two players
