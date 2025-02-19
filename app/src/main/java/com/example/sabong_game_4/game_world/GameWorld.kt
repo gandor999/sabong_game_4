@@ -3,12 +3,17 @@ package com.example.sabong_game_4.game_world
 import android.app.Activity
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import com.example.sabong_game_4.config.GlobalConstants
 import com.example.sabong_game_4.config.Scaler
 import com.example.sabong_game_4.controls.MovementControl
 import com.example.sabong_game_4.game_world.playables.GameCharacter
+import com.example.sabong_game_4.states.States
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.lang.ref.WeakReference
 
 @RequiresApi(Build.VERSION_CODES.R)
@@ -61,56 +66,17 @@ class GameWorld(
 
         for (gameCharacter in gameCharacters) {
             val gravityAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, 0.1f)
-            val groundLevel = realPhoneScreenHeight - GlobalConstants.FULL_SCREEN_PADDING - gameCharacter.height
+            val groundLevel =
+                realPhoneScreenHeight - GlobalConstants.FULL_SCREEN_PADDING - gameCharacter.height
             val jumpAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, .2f)
 
+            EffectsManager.doDecellerationEffect(gameCharacter)
+
             if (gameCharacter.jumpWasPressed) {
-                doJumpEffect(gameCharacter, jumpAcceleration)
-                continue
+                EffectsManager.doJumpEffect(gameCharacter, jumpAcceleration)
+            } else {
+                EffectsManager.doGravityEffect(gameCharacter, gravityAcceleration, groundLevel)
             }
-
-            if (gameCharacter.isStoppingRightMove) {
-                Thread.sleep(10L)
-                if (gameCharacter.velocityX > 0f) {
-                    gameCharacter.velocityX = maxOf(0f, gameCharacter.velocityX - gameCharacter.accelerationX)
-                    gameCharacter.x += gameCharacter.velocityX
-                } else {
-                    gameCharacter.isStoppingRightMove = false
-                }
-            }
-
-            if (gameCharacter.isStoppingLeftMove) {
-                Thread.sleep(10L)
-                if (gameCharacter.velocityX > 0f) {
-                    gameCharacter.velocityX = maxOf(0f, gameCharacter.velocityX - gameCharacter.accelerationX)
-                    gameCharacter.x -= gameCharacter.velocityX
-                } else {
-                    gameCharacter.isStoppingLeftMove = false
-                }
-            }
-
-            doGravityEffect(gameCharacter, gravityAcceleration, groundLevel)
-        }
-    }
-
-    override fun doJumpEffect(gameCharacter: GameCharacter, acceleration: Float) {
-        if (gameCharacter.jumpAmmo > 0) {
-            gameCharacter.velocityY -= acceleration
-            gameCharacter.y += gameCharacter.velocityY
-            gameCharacter.jumpAmmo -= 1
-        } else {
-            gameCharacter.jumpWasPressed = false
-            gameCharacter.jumpAmmo = gameCharacter.originalJumpAmmo
-        }
-    }
-
-    override fun doGravityEffect(gameCharacter: GameCharacter, acceleration: Float, groundLevel: Int) {
-        if (gameCharacter.y + gameCharacter.velocityY < groundLevel) {
-            gameCharacter.y += gameCharacter.velocityY
-            gameCharacter.velocityY += acceleration
-        } else {
-            gameCharacter.velocityY = 0f
-            gameCharacter.y = groundLevel.toFloat()
         }
     }
 }

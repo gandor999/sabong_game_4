@@ -12,19 +12,15 @@ import com.example.sabong_game_4.states.States
 class MoveRightButton(context: Context, playableCharacter: PlayableCharacter) :
     LeftSideController(context, playableCharacter) {
 
-//    var isCurrentlyPressing = false
     private val runnable = object : Runnable {
         override fun run() {
-            if (isPressed) {
-                execute()
-                handler.post(this)
-            }
+            if (isPressed && playableCharacter.currentState != States.StoppingRunningLeft) execute()
+            handler.post(this)
         }
     }
 
     override fun execute() {
         super.execute()
-//        Log.d("Gandor", "MoveRightButton | execute | playableCharacter.currentState: ${playableCharacter.currentState}")
         playableCharacter.moveRight()
     }
 
@@ -36,16 +32,14 @@ class MoveRightButton(context: Context, playableCharacter: PlayableCharacter) :
                 return true
             }
             MotionEvent.ACTION_DOWN -> {
-                if (!isPressed) {
-                    isPressed = true
-                    handler.post(runnable) // Start repeating action
-                }
+                isPressed = true
+                handler.post(runnable) // Start repeating action
                 return true
             }
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 isPressed = false
                 handler.removeCallbacks(runnable) // Stop repeating
-                playableCharacter.isStoppingRightMove = true
+                playableCharacter.currentState = States.StoppingRunningRight
                 return true
             }
             else -> super.onTouchEvent(event)

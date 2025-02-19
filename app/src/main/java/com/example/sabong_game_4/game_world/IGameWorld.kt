@@ -13,8 +13,4 @@ interface IGameWorld {
     fun runGameLoop()
 
     fun updateWorld()
-
-    fun doJumpEffect(gameCharacter: GameCharacter, acceleration: Float)
-
-    fun doGravityEffect(gameCharacter: GameCharacter, acceleration: Float, groundLevel: Int)
 }

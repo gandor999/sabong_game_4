@@ -6,5 +6,7 @@ enum class States {
     Idle,
     RunningRight,
     RunningLeft,
+    StoppingRunningRight,
+    StoppingRunningLeft,
     Falling
 }

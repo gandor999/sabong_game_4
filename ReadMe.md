@@ -21,9 +21,11 @@ To do:
 - [x] Fix Jumping mechanism bug, in JumpButton
 - [x] Refine jumping action to scale
 - [x] Refine gravity
+- [ ] Refactor current state to be more than one
+- [ ] Refine jumping while stopping moving
+- [ ] Refine acceleration scaling
 - [x] Add moving right logic
-- [ ] Refine moving right
-- [ ] Refactor moving right and left inside game world instead and see what happens, right now it just seems buggy as if its not synchronized
+- [x] Refine moving right
 - [x] Fix on MotionEvent.ActionMove bug, it accelerates the object on dragging
 - [x] Add moving left logic
 - [x] Attach moving right and left controls

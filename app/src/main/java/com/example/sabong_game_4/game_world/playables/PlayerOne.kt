@@ -18,6 +18,8 @@ class PlayerOne(context: Context) : PlayableCharacter(
     // this must be initialized
     override var jumpAmmo: Int = originalJumpAmmo
 
+    override fun initState() {}
+
     init {
         setViewDimensions(width, height, true)
         setBorderLine(Color.TRANSPARENT, Color.BLUE, 10)
