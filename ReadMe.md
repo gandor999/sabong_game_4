@@ -1,5 +1,7 @@
 Remember: This was developed with dimensions of a Pixel 3a XL 34 phone
 
+The whole plan for the game: Make a game wherein two players battle it out with their own chickens
+
 To do:
 - [x] Make a conversion ratio for the dimensions on GandorView
 - [x] Let set padding from the root layout be the config to place the view starting position
