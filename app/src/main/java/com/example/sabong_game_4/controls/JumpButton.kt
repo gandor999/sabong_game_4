@@ -13,9 +13,7 @@ class JumpButton(context: Context, playableCharacter: PlayableCharacter) :
 
     override fun execute() {
         super.execute()
-        Log.d("Gandor", "!playableCharacter.characterState.isJumping() && !playableCharacter.characterState.isFalling(): ${!playableCharacter.characterState.isJumping() && !playableCharacter.characterState.isFalling()} | playableCharacter.characterState.isJumping(): ${playableCharacter.characterState.isJumping()} | playableCharacter.characterState.isFalling(): ${playableCharacter.characterState.isFalling()}")
         if (!playableCharacter.characterState.isJumping() && !playableCharacter.characterState.isFalling()) {
-            Log.d("Gandor", "Jumped!")
             playableCharacter.jump()
         }
     }

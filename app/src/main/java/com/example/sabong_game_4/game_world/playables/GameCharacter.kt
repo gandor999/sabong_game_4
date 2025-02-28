@@ -13,9 +13,6 @@ abstract class GameCharacter(context: Context): GandorView(context), IGameCharac
     var velocityX = 0f;
     var characterState = CharacterState()
     var jumpWasPressed = false
-    var isStoppingRightMove = false
-    var isStoppingLeftMove = false
-    var isPressingLeft = false
     open val terminalVelocityX = Scaler.scaleFloatOnWidth(resources, 15f)
     open val originalJumpAmmo = 20
     open val accelerationX = 2f

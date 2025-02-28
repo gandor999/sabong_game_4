@@ -23,36 +23,6 @@ object ControllersMapper : IControllersMapper {
                     if (context is Activity) context.windowManager.maximumWindowMetrics.bounds.height() - (2 * GlobalConstants.FULL_SCREEN_PADDING) else context.resources.displayMetrics.heightPixels
 
                 // remember, the view may not draw the dimensions right away here, use the phoneWidth and phoneHeight dimensions for the calculations
-                val leftButton = MoveLeftButton(context, character).apply {
-                    setViewDimensions(
-                        width = phoneWidth / 4,
-                        height = phoneHeight,
-                        false
-                    )
-
-                    setBorderLine(
-                        borderColor = Color.BLUE,
-                        backgroundColor = Color.TRANSPARENT,
-                        lineWidth = 10
-                    )
-                }
-
-                val rightButton = MoveRightButton(context, character).apply {
-                    setViewDimensions(
-                        width = phoneWidth / 4,
-                        height = phoneHeight,
-                        false
-                    )
-
-                    setBorderLine(
-                        borderColor = Color.RED,
-                        backgroundColor = Color.TRANSPARENT,
-                        lineWidth = 10
-                    )
-
-                    x = (phoneWidth / 4).toFloat()
-                }
-
                 val jumpButton = JumpButton(context, character).apply {
                     setViewDimensions(
                         width = 180,
@@ -95,9 +65,22 @@ object ControllersMapper : IControllersMapper {
                     y = adjustYToScreenFit - (phoneHeight.toFloat() / 5)
                 }
 
+                val leftSideController = LeftSideController(context, character).apply {
+                    setViewDimensions(
+                        width = phoneWidth / 2,
+                        height = phoneHeight,
+                        false
+                    )
+
+                    setBorderLine(
+                        borderColor = Color.YELLOW,
+                        backgroundColor = Color.TRANSPARENT,
+                        lineWidth = 10
+                    )
+                }
+
                 return listOf(
-                    leftButton,
-                    rightButton,
+                    leftSideController,
                     jumpButton,
                     attackButton
                 )

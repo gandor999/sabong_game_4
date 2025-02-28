@@ -92,7 +92,21 @@ class CharacterState: ICharacterState {
     }
 
     override fun isIdle(): Boolean {
-        return stateBucket.contains(States.Idle) && stateBucket.size == 1
+        synchronized(stateBucket) {
+            return stateBucket.contains(States.Idle) && stateBucket.size == 1
+        }
+    }
+
+    override fun isMovingRight(): Boolean {
+        synchronized(stateBucket) {
+            return stateBucket.contains(States.RunningRight)
+        }
+    }
+
+    override fun isMovingLeft(): Boolean {
+        synchronized(stateBucket) {
+            return stateBucket.contains(States.RunningLeft)
+        }
     }
 
     override fun getCurrentState(): Set<States> {
