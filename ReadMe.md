@@ -32,7 +32,7 @@ To do:
 - [x] Add moving left logic
 - [x] Attach moving right and left controls
 - [x] Refine jumping, make it jump faster
-- [ ] Refine moving left and right to change direction on drag
+- [x] Refine moving left and right to change direction on drag
 - [ ] Add logic for collision
 - [ ] Limit characters within the borders of the screen
 - [ ] Add logic for attack collision
