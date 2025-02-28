@@ -7,12 +7,14 @@ class CharacterState: ICharacterState {
             stateBucket.removeIf {
                 listOf(States.Idle, States.Falling).contains(it)
             }
+            stateBucket.add(States.Jumping)
         }
-        stateBucket.add(States.Jumping)
     }
 
     override fun isJumping(): Boolean {
-        return stateBucket.contains(States.Jumping)
+        synchronized(stateBucket) {
+            return stateBucket.contains(States.Jumping)
+        }
     }
 
     override fun toFalling() {
@@ -20,12 +22,14 @@ class CharacterState: ICharacterState {
             stateBucket.removeIf {
                 listOf(States.Idle, States.Jumping).contains(it)
             }
+            stateBucket.add(States.Falling)
         }
-        stateBucket.add(States.Falling)
     }
 
     override fun isFalling(): Boolean {
-        return stateBucket.contains(States.Falling)
+        synchronized(stateBucket) {
+            return stateBucket.contains(States.Falling)
+        }
     }
 
     override fun toRunningRight() {
@@ -36,8 +40,8 @@ class CharacterState: ICharacterState {
                     States.Jumping,
                     States.Falling).contains(it)
             }
+            stateBucket.add(States.RunningRight)
         }
-        stateBucket.add(States.RunningRight)
     }
 
     override fun toRunningLeft() {
@@ -46,8 +50,8 @@ class CharacterState: ICharacterState {
             stateBucket.removeIf {
                 !listOf(States.Jumping, States.Falling).contains(it)
             }
+            stateBucket.add(States.RunningLeft)
         }
-        stateBucket.add(States.RunningLeft)
     }
 
     override fun toStoppingLeft() {
@@ -56,8 +60,8 @@ class CharacterState: ICharacterState {
             stateBucket.removeIf {
                 !listOf(States.Jumping, States.Falling).contains(it)
             }
+            stateBucket.add(States.StoppingRunningLeft)
         }
-        stateBucket.add(States.StoppingRunningLeft)
     }
 
     override fun toStoppingRight() {
@@ -66,8 +70,8 @@ class CharacterState: ICharacterState {
             stateBucket.removeIf {
                 !listOf(States.Jumping, States.Falling).contains(it)
             }
+            stateBucket.add(States.StoppingRunningRight)
         }
-        stateBucket.add(States.StoppingRunningRight)
     }
 
     override fun isMovingHorizontally(): Boolean {
