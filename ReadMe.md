@@ -34,7 +34,7 @@ To do:
 - [x] Refine jumping, make it jump faster
 - [x] Refine moving left and right to change direction on drag
 - [x] Fix decceleration bug
-- [ ] Add logic for collision
+- [ ] Add logic for collision but put in in another class separate from the objects inside the game world, maybe have it run all the time to keep track of every objects size and location, maybe inside the game loop but separate from update world
 - [ ] Limit characters within the borders of the screen
 - [ ] Add logic for attack collision
 - [ ] Add life bars
