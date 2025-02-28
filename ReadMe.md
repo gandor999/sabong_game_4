@@ -25,7 +25,7 @@ To do:
 - [x] Refine gravity
 - [x] Refactor current state to be more than one
 - [x] Refine jumping while stopping moving
-- [ ] Refine acceleration scaling to be more intuitive to handle
+- [x] Refine acceleration scaling to be more intuitive to handle
 - [x] Add moving right logic
 - [x] Refine moving right
 - [x] Fix on MotionEvent.ActionMove bug, it accelerates the object on dragging
@@ -33,6 +33,7 @@ To do:
 - [x] Attach moving right and left controls
 - [x] Refine jumping, make it jump faster
 - [x] Refine moving left and right to change direction on drag
+- [x] Fix decceleration bug
 - [ ] Add logic for collision
 - [ ] Limit characters within the borders of the screen
 - [ ] Add logic for attack collision

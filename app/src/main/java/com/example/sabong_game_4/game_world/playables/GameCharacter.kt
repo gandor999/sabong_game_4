@@ -13,9 +13,10 @@ abstract class GameCharacter(context: Context): GandorView(context), IGameCharac
     var velocityX = 0f;
     var characterState = CharacterState()
     var jumpWasPressed = false
-    open val terminalVelocityX = Scaler.scaleFloatOnWidth(resources, 15f)
+    open val terminalVelocityX = Scaler.scaleFloatOnWidth(resources, 20f)
     open val originalJumpAmmo = 20
-    open val accelerationX = 2f
+    open val accelerationX = 7f
+    open val deccelerationX = 5f
     abstract var jumpAmmo: Int
 
     override fun jump() {

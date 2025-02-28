@@ -113,7 +113,15 @@ class CharacterState: ICharacterState {
         }
     }
 
-    override fun getCurrentState(): Set<States> {
-        return stateBucket
+    override fun isStoppingRight(): Boolean {
+        synchronized(stateBucket) {
+            return stateBucket.contains(States.StoppingRunningRight)
+        }
+    }
+
+    override fun isStoppingLeft(): Boolean {
+        synchronized(stateBucket) {
+            return stateBucket.contains(States.StoppingRunningLeft)
+        }
     }
 }

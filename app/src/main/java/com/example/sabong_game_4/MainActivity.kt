@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 //        HealthChecker.logFps()
 
         val gameWorld = GameWorldBuilder.setWorld(topLevelLayout, this).setWorldBackground(
-            backgroundColor = Color.TRANSPARENT,
+            backgroundColor = Color.WHITE,
             borderColor = Color.BLACK,
             lineWidth = 15,
             padding = GlobalConstants.FULL_SCREEN_PADDING

@@ -8,28 +8,19 @@ import com.example.sabong_game_4.states.States
 @RequiresApi(Build.VERSION_CODES.R)
 object EffectsManager : IEffectsManager {
     override fun doDecellerationEffect(gameCharacter: GameCharacter) {
-//        val isJumpingOrFalling =
-//            gameCharacter.currentState.getCurrentState()
-//                .contains(States.Jumping) || gameCharacter.currentState.getCurrentState()
-//                .contains(States.Falling)
-        val newVelocity = maxOf(0f, gameCharacter.velocityX - gameCharacter.accelerationX)
+        val newVelocity = maxOf(0f, gameCharacter.velocityX - gameCharacter.deccelerationX)
 
-        if (gameCharacter.characterState.getCurrentState()
-                .contains(States.StoppingRunningRight) || gameCharacter.characterState.getCurrentState()
-                .contains(States.StoppingRunningLeft)
-        ) {
+        if (gameCharacter.characterState.isStoppingRight() || gameCharacter.characterState.isStoppingLeft()) {
             Thread.sleep(10L)
             if (gameCharacter.velocityX > 0f) {
                 gameCharacter.velocityX = newVelocity
-                if (gameCharacter.characterState.getCurrentState()
-                        .contains(States.StoppingRunningRight)
-                ) {
+                if (gameCharacter.characterState.isStoppingRight()) {
                     gameCharacter.x += gameCharacter.velocityX
                 } else {
                     gameCharacter.x -= gameCharacter.velocityX
                 }
             } else {
-                    gameCharacter.characterState.toIdle()
+                gameCharacter.characterState.toIdle()
             }
         }
     }
@@ -55,14 +46,10 @@ object EffectsManager : IEffectsManager {
             gameCharacter.velocityY += acceleration
             gameCharacter.characterState.toFalling()
         } else {
-
             gameCharacter.velocityY = 0f
             gameCharacter.y = groundLevel.toFloat()
 
-            gameCharacter.characterState.toIdle()
-
-//            if (!gameCharacter.characterState.isMovingHorizontally()) gameCharacter.characterState.toIdle()
-//            if (gameCharacter.characterState.isMovingHorizontally())
+            if (!gameCharacter.characterState.isStoppingLeft() && !gameCharacter.characterState.isStoppingRight()) gameCharacter.characterState.toIdle()
         }
     }
 }

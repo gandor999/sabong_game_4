@@ -53,8 +53,8 @@ open class LeftSideController(context: Context, playableCharacter: PlayableChara
             MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                 isPressed = false
                 synchronized(runnable) {
-                    handler.removeCallbacks(runnable) // Stop repeating
                     if (runnable.moveDirection == Directions.Left) playableCharacter.characterState.toStoppingLeft() else playableCharacter.characterState.toStoppingRight()
+                    handler.removeCallbacks(runnable) // Stop repeating
                 }
                 return true
             }

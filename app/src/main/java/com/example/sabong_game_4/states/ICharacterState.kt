@@ -27,5 +27,7 @@ interface ICharacterState {
 
     fun isMovingLeft(): Boolean
 
-    fun getCurrentState(): Set<States>
+    fun isStoppingRight(): Boolean
+
+    fun isStoppingLeft(): Boolean
 }
