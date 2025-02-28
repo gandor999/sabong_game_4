@@ -55,10 +55,14 @@ object EffectsManager : IEffectsManager {
             gameCharacter.velocityY += acceleration
             gameCharacter.characterState.toFalling()
         } else {
+
             gameCharacter.velocityY = 0f
             gameCharacter.y = groundLevel.toFloat()
 
-            if (!gameCharacter.characterState.isMovingHorizontally()) gameCharacter.characterState.toIdle()
+            gameCharacter.characterState.toIdle()
+
+//            if (!gameCharacter.characterState.isMovingHorizontally()) gameCharacter.characterState.toIdle()
+//            if (gameCharacter.characterState.isMovingHorizontally())
         }
     }
 }

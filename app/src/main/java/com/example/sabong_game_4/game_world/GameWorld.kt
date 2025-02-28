@@ -65,10 +65,10 @@ class GameWorld(
         Thread.sleep(10L)
 
         for (gameCharacter in gameCharacters) {
-            val gravityAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, 0.1f)
+            val gravityAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, 0.4f)
             val groundLevel =
                 realPhoneScreenHeight - GlobalConstants.FULL_SCREEN_PADDING - gameCharacter.height
-            val jumpAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, .2f)
+            val jumpAcceleration = Scaler.scaleFloatOnHeight(gameCharacter.resources, 14f)
 
             EffectsManager.doDecellerationEffect(gameCharacter)
 

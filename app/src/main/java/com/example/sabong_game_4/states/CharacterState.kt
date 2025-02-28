@@ -32,7 +32,9 @@ class CharacterState: ICharacterState {
         synchronized(stateBucket) {
             stateBucket.remove(States.Idle)
             stateBucket.removeIf {
-                !listOf(States.Jumping, States.Falling).contains(it)
+                !listOf(
+                    States.Jumping,
+                    States.Falling).contains(it)
             }
         }
         stateBucket.add(States.RunningRight)
